@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+    <script src="js/handcricket.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>LET's Play Hand Cricket</h1>
+        <h3>Have Fun :D</h3>
+    </div>
+    <div>
+        <div class="container">
+           <p>Start by entering the score you hit and clicking the go!.</p>
+            <div class="col-lg-4">
+<!--                <div class="row">-->
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">User Score</span>
+                        <input type="number" class="form-control" placeholder="Enter a Score" aria-label="Username" id="userN" aria-describedby="basic-addon1">
+<!--                        <div class="col-lg-1 ml-auto">-->
+                            <button type="button" onclick="input();" class="btn btn-primary">Go!</button>
+<!--                        </div>-->
+                    </div>
+<!--                </div>-->
+                <br>
+<!--                <div class="row">-->
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Computer</span>
+                        <input type="text" class="form-control" id="genN" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                    </div>
+<!--                </div>-->
+            </div>
+            <!--
+            <p>Generated:</p>
+            <p id="genN"></p>
+-->
+        </div>
+    </div>
+    <br>
+    <footer>
+        <div class="jumbotron">
+            <h4>
+                <ul>
+                    <li>Well Played
+                        <div id="Name" style="display:inline"> </div>
+                    </li>
+                    <li>Your total Score is
+                        <div id="Score" style="display:inline"></div>
+                    </li>
+                    <li>You played
+                        <div id="Balls" style="display:inline"></div>
+                    </li>
+                </ul>
+            </h4>
+        </div>
+        <!--
+        <script>
+            //            displayScore(totalBalls, totalScore, playerName);
+            alert(" Keep playing  'Hand Cricket' the only fun game");
+            //        test();
+
+        </script>
+-->
+    </footer>
+</body>
+
+</html>
