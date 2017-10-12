@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Hand Cricket !! </title>
+	<script src="js/handcricket.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="jumbotron">
+		<h1>LET's Play Hand Cricket</h1>
+		<h3>Have Fun :D</h3>
+	</div>
+	<div id="game_block">
+		<div class="container">
+			<p>Start by entering the score you want to hit and clicking the go!.</p>
+			<div class="row">
+				<div class="col-lg-5">
+					<div>
+						<img src="None">
+					</div>
+					<div class="text-center">
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button type="button" class="btn btn-secondary" onClick="input(0);">0</button>
+							<button type="button" class="btn btn-secondary" onClick="input(1);">1</button>
+							<button type="button" class="btn btn-secondary" onClick="input(2);">2</button>
+							<button type="button" class="btn btn-secondary" onClick="input(3);">3</button>
+							<button type="button" class="btn btn-secondary" onClick="input(4);">4</button>
+							<button type="button" class="btn btn-secondary" onClick="input(5);">5</button>
+							<button type="button" class="btn btn-secondary" onClick="input(6);">6</button>
+						</div>
+					</div>
+					<!--
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Player </span>
+                        <input type="number" class="form-control" placeholder="Enter a Score" aria-label="Username" id="userN" aria-describedby="basic-addon1">
+                                                <div class="col-lg-1 ml-auto">
+                        <button type="button" onclick="input();" class="btn btn-primary">Drop!</button>
+                                                </div>
+                    </div>
+-->
+				</div>
+				<div class="col-lg-2">
+					<h3 class="text-center">. Vs .</h3>
+				</div>
+				<div class="col-lg-5">
+					<!--                </div>-->
+					<!--                <div class="row">-->
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Computer</span>
+						<input type="text" class="form-control" id="genN" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" disabled>
+					</div>
+					<!--                </div>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<footer>
+		<div class="jumbotron">
+			<h4>
+				<ul>
+					<li>Well Played
+						<div id="Name" style="display:inline"> </div>
+					</li>
+					<li>Your total Score is
+						<div id="Score" style="display:inline"></div>
+					</li>
+					<li>You played
+						<div id="Balls" style="display:inline"></div>
+					</li>
+				</ul>
+			</h4>
+		</div>
+		<!--
+        <script>
+            //            displayScore(totalBalls, totalScore, playerName);
+            alert(" Keep playing  'Hand Cricket' the only fun game");
+            //        test();
+
+        </script>
+-->
+	</footer>
+	<script src="js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</body>
+
+</html>
