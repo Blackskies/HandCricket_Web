@@ -9,30 +9,39 @@
 
 <body>
 	<div class="jumbotron">
-		<h1>LET's Play Hand Cricket</h1>
+		<img src="img/titleBarBlack.png" class="img-thumbnail float-right" alt="Responsive image" width="15%" height="15%">
+		<h1>Let's Play Hand Cricket</h1>
 		<h3>Have Fun :D</h3>
 	</div>
-	<div id="game_block">
+	<div id="startButton">
+	<div class="container text-center" >
+		<br>
+		<br>
+		<button class="btn btn-success btn-lg btn-block" onClick="startButtonFun();">Start</button>
+	</div>
+	</div>
+	<div id="gameBlock" style="display:none">
 		<div class="container">
 			<p style="text-align: center;">Start by clicking the score and Drop your Choice</p>
 			<div class="row">
 				<div class="col-lg-5">
-					<div class="text-center">
-						<img src="img/0.png" id="userHandImage" height="50%" width="50%" align="center">
-					</div>
-					<br>
-					<div class="text-center">
-						<div class="btn-group" role="group" aria-label="Basic example">
-							<button type="button" class="btn btn-secondary" onClick="setValue(0);">0</button>
-							<button type="button" class="btn btn-secondary" onClick="setValue(1);">1</button>
-							<button type="button" class="btn btn-secondary" onClick="setValue(2);">2</button>
-							<button type="button" class="btn btn-secondary" onClick="setValue(3);">3</button>
-							<button type="button" class="btn btn-secondary" onClick="setValue(4);">4</button>
-							<button type="button" class="btn btn-secondary" onClick="setValue(5);">5</button>
-							<button type="button" class="btn btn-secondary" onClick="setValue(6);">6</button>
+					<div class="thumbnail">
+						<div class="text-center">
+							<img src="img/0.png" id="userHandImage" height="50%" width="50%" align="center">
 						</div>
-					</div>
-					<!--
+						<br>
+						<div class="text-center">
+							<div class="btn-group " role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-secondary" onClick="setValue(0);">0</button>
+								<button type="button" class="btn btn-secondary" onClick="setValue(1);">1</button>
+								<button type="button" class="btn btn-secondary" onClick="setValue(2);">2</button>
+								<button type="button" class="btn btn-secondary" onClick="setValue(3);">3</button>
+								<button type="button" class="btn btn-secondary" onClick="setValue(4);">4</button>
+								<button type="button" class="btn btn-secondary" onClick="setValue(5);">5</button>
+								<button type="button" class="btn btn-secondary" onClick="setValue(6);">6</button>
+							</div>
+						</div>
+						<!--
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1">Player </span>
                         <input type="number" class="form-control" placeholder="Enter a Score" aria-label="Username" id="userN" aria-describedby="basic-addon1">
@@ -41,9 +50,20 @@
                                                 </div>
                     </div>
 -->
+					</div>
 				</div>
-				<div class="col-lg-2">
-					<button class="btn btn-primary" onClick="input();">Drop!</button>
+				<div class="col-lg-2 text-center ">
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<button class="btn btn-primary align-middle" onClick="input();">Drop!</button>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 					<!--					<h3 class="text-center">. Vs .</h3>-->
 				</div>
 				<div class="col-lg-5">
@@ -51,9 +71,11 @@
 						<img src="img/0.png" id="compHandImage" height="50%" width="50%" align="center">
 					</div>
 					<br>
-					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Computer</span>
-						<input type="text" class="form-control" id="genN" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" disabled>
+					<div class="">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">Computer</span>
+							<input type="text" class="form-control" id="genN" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" disabled>
+						</div>
 					</div>
 				</div>
 			</div>
