@@ -17,7 +17,7 @@
 		<div class="container text-center">
 			<br>
 			<br>
-			<button class="btn btn-success btn-lg btn-block" onClick="startButtonFun();">Start</button>
+			<button class="btn btn-success btn-lg btn-block" onclick="startButtonFun();">Start</button>
 		</div>
 	</div>
 	<div class="">
@@ -25,7 +25,7 @@
 			<div class="container text-center">
 				<br>
 				<br>
-				<button class="btn btn-success btn-lg btn-block" onClick="restartFun();">Restart</button>
+				<button class="btn btn-success btn-lg btn-block" onclick="restartFun();">Restart</button>
 			</div>
 		</div>
 	</div>
@@ -41,15 +41,16 @@
 						<br>
 						<div class="text-center">
 							<div class="btn-group " role="group" aria-label="Basic example">
-								<button type="button" class="btn btn-secondary" onClick="setValue(0);">0</button>
-								<button type="button" class="btn btn-secondary" onClick="setValue(1);">1</button>
-								<button type="button" class="btn btn-secondary" onClick="setValue(2);">2</button>
-								<button type="button" class="btn btn-secondary" onClick="setValue(3);">3</button>
-								<button type="button" class="btn btn-secondary" onClick="setValue(4);">4</button>
-								<button type="button" class="btn btn-secondary" onClick="setValue(5);">5</button>
-								<button type="button" class="btn btn-secondary" onClick="setValue(6);">6</button>
+								<button type="button" class="btn btn-secondary" onclick="setValue(0);">0</button>
+								<button type="button" class="btn btn-secondary" onclick="setValue(1);">1</button>
+								<button type="button" class="btn btn-secondary" onclick="setValue(2);">2</button>
+								<button type="button" class="btn btn-secondary" onclick="setValue(3);">3</button>
+								<button type="button" class="btn btn-secondary" onclick="setValue(4);">4</button>
+								<button type="button" class="btn btn-secondary" onclick="setValue(5);">5</button>
+								<button type="button" class="btn btn-secondary" onclick="setValue(6);">6</button>
 							</div>
-							<p>Your Scored:<div id="currentScore" style="display:inline">sample</div></p>
+							<div>Your Score :<p id="currentScore" style="display:inline">0</p>
+							</div>
 						</div>
 						<!--
                     <div class="input-group">
@@ -68,8 +69,8 @@
 					<br>
 					<br>
 					<br>
-					<button class="btn btn-primary align-middle" onClick="input();" id="drop">Drop!</button>
-					<button class="btn btn-primary align-middle" onClick="finishFun();" id="finish" style="display:none">get Score</button>
+					<button class="btn btn-primary align-middle" onclick="input();" id="drop">Drop!</button>
+					<button class="btn btn-primary align-middle" onclick="finishFun();" id="finish" style="display:none">get Score</button>
 					<br>
 					<br>
 					<br>
