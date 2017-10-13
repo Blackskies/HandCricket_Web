@@ -120,6 +120,7 @@ function mainGame() {
 	} else {
 		window.alert("ERROR: Enter a score in the range [0,6]");
 	}
+	document.getElementById("currentScore").innerHTML = totalScore;
 }
 
 
