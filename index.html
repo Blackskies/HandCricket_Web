@@ -14,20 +14,29 @@
 		<h3>Have Fun :D</h3>
 	</div>
 	<div id="startButton">
-	<div class="container text-center" >
-		<br>
-		<br>
-		<button class="btn btn-success btn-lg btn-block" onClick="startButtonFun();">Start</button>
+		<div class="container text-center">
+			<br>
+			<br>
+			<button class="btn btn-success btn-lg btn-block" onClick="startButtonFun();">Start</button>
+		</div>
 	</div>
+	<div class="">
+		<div id="restart" style="display:none">
+			<div class="container text-center">
+				<br>
+				<br>
+				<button class="btn btn-success btn-lg btn-block" onClick="restartFun();">Restart</button>
+			</div>
+		</div>
 	</div>
 	<div id="gameBlock" style="display:none">
 		<div class="container">
-			<p style="text-align: center;">Start by clicking the score and Drop your Choice</p>
+			<p style="text-align: center;" id="info">Start by clicking the score and Drop your Choice</p>
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5">
 					<div class="thumbnail">
 						<div class="text-center">
-							<img src="img/ready.png" id="userHandImage" height="50%" width="50%" align="center">
+							<img src="img/orange0.png" id="userHandImage" height="50%" width="50%" align="center">
 						</div>
 						<br>
 						<div class="text-center">
@@ -58,7 +67,8 @@
 					<br>
 					<br>
 					<br>
-					<button class="btn btn-primary align-middle" onClick="input();">Drop!</button>
+					<button class="btn btn-primary align-middle" onClick="input();" id="drop">Drop!</button>
+					<button class="btn btn-primary align-middle" onClick="finishFun();" id="finish" style="display:none">get Score</button>
 					<br>
 					<br>
 					<br>
@@ -68,7 +78,7 @@
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-5">
 					<div class="text-center">
-						<img src="img/ready.png" id="compHandImage" height="50%" width="50%" align="center">
+						<img src="img/orange0.png" id="compHandImage" height="50%" width="50%" align="center">
 					</div>
 					<br>
 					<div class="">
@@ -83,20 +93,22 @@
 	</div>
 	<br>
 	<footer>
-		<div class="jumbotron">
-			<h4>
-				<ul>
-					<li>Well Played
-						<div id="Name" style="display:inline"> </div>
-					</li>
-					<li>Your total Score is
-						<div id="Score" style="display:inline"></div>
-					</li>
-					<li>You played
-						<div id="Balls" style="display:inline"></div>
-					</li>
-				</ul>
-			</h4>
+		<div class="jumbotron" id="final" style="display:none">
+			<div>
+				<h4>
+					<ul>
+						<li>Well Played
+							<div id="Name" style="display:inline"> </div>
+						</li>
+						<li>Your total Score is
+							<div id="Score" style="display:inline"></div>
+						</li>
+						<li>You played
+							<div id="Balls" style="display:inline"></div>
+						</li>
+					</ul>
+				</h4>
+			</div>
 		</div>
 		<!--
         <script>

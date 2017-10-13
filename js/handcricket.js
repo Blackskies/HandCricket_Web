@@ -17,27 +17,27 @@ function dec() {
 function setValue(value) {
 	userInput = Number(value);
 	id = "userHandImage"
-	setImage(value,id);
+	setImage(value, id);
 	//	alert("Value set :"+value);
 }
 
 function myFunction() {
-    var x = document.getElementById("startButton");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+	var x = document.getElementById("startButton");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
 }
 
-function startButtonFun(){
+function startButtonFun() {
 	var start = document.getElementById("startButton");
 	var game = document.getElementById("gameBlock");
 	start.style.display = "none";
 	game.style.display = "block";
 }
 
-function setImage(value,id) {
+function setImage(value, id) {
 	var pic = document.getElementById(id);
 	if (0 == value) {
 		pic.src = "img/orange0.png";
@@ -56,7 +56,7 @@ function setImage(value,id) {
 	}
 }
 
-function displayScore(totalBalls, totalScore, playerName) {
+function displayScore(playerName) {
 	var overs = Math.floor(totalBalls / 6);
 	var ballsPlayed = Math.floor(totalBalls % 6);
 	ballInfo = overs + " Overs, and " + ballsPlayed + " Balls";
@@ -65,8 +65,32 @@ function displayScore(totalBalls, totalScore, playerName) {
 	document.getElementById("Balls").innerHTML = ballInfo;
 }
 
+function gameFinished() {
+	var drop = document.getElementById("drop");
+	var finish = document.getElementById("finish");
+	drop.style.display = "none";
+	finish.style.display = "block";
+}
+
+function restartFun(){
+	location.reload(true);
+}
+
+function finishFun() {
+	var final = document.getElementById("final");
+	var finish = document.getElementById("finish");
+	var restart = document.getElementById("restart");
+	var gameBlock = document.getElementById("gameBlock");
+	var playerName = window.prompt("Please enter your name", "Harry Potter");
+	finish.style.display = "none";
+	restart.style.display = "block";
+	final.style.display = "block";
+	gameBlock.style.display = "none";
+	displayScore(playerName);
+}
+
 function mainGame() {
-	
+
 	var idc = "compHandImage"
 	var freeHit = false;
 	count();
@@ -75,19 +99,14 @@ function mainGame() {
 	}
 	if (userInput <= 6 && userInput >= 0) {
 		var genNum = Math.floor(Math.random() * 6) + 1;
-		setImage(genNum,idc);
+		setImage(genNum, idc);
 		console.log(genNum);
 		document.getElementById("genN").value = genNum;
 		if (freeHit == false) {
 			if (userInput == genNum) {
 				window.alert("Empire says Your 'OUT' ");
-				var playerName = window.prompt("Please enter your name", "Harry Potter");
-				displayScore(totalBalls, totalScore, playerName);
+				gameFinished();
 				return;
-			}
-		} else {
-			if (userInput == 6 || userInput == 4) {
-				alert("Empire says 'ITS A SHOT'");
 			}
 		}
 		freeHit = 0;
@@ -103,7 +122,8 @@ function mainGame() {
 	}
 }
 
-function input(userInput) {
+
+function input() {
 	'use strict';
 	//	alert(userInput);
 	//    var userInput = document.getElementById("userN").value;
@@ -111,7 +131,7 @@ function input(userInput) {
 	mainGame();
 }
 
-function alert_value(z) {
-	//	var z = document.getElementById("userScoreId").value;
-	alert(z);
-}
+//function alert_value(z) {
+//	//	var z = document.getElementById("userScoreId").value;
+//	alert(z);
+//}
