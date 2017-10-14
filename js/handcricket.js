@@ -1,22 +1,43 @@
-var totalBalls = 0;
-var totalScore = 0;
+var totalBallsUser = 0;
+var totalScoreUser = 0;
 var userInput = 0;
+var totalBallsSys = 0;
+var totalScoreSys = 0;
 
 function addScore(x) {
-	totalScore = totalScore + x;
+	totalScoreUser = totalScoreUser + x;
 }
 
 function count() {
-	totalBalls += 1;
+	totalBallsUser += 1;
 }
 
 function dec() {
-	totalBalls -= 1;
+	totalBallsUser -= 1;
 }
 
-function setValue(value) {
+function addScoreSys(x) {
+	totalScoreSys = totalScoreSys + x;
+}
+
+function countSys() {
+	totalBallsSys += 1;
+}
+
+function decSys() {
+	totalBallsSys -= 1;
+}
+
+function setValueBat(value) {
 	userInput = Number(value);
 	id = "userHandImage"
+	setImage(value, id);
+	//	alert("Value set :"+value);
+}
+
+function setValueBall(value) {
+	userInput = Number(value);
+	id = "userHandImageBowl"
 	setImage(value, id);
 	//	alert("Value set :"+value);
 }
@@ -32,7 +53,9 @@ function myFunction() {
 
 function startButtonFun() {
 	var start = document.getElementById("startButton");
-	var game = document.getElementById("gameBlock");
+	var game = document.getElementById("batGameBlock");
+//	var headerBlock = document.getElementById("headerBlock");
+//	headerBlock.style.display = "none";
 	start.style.display = "none";
 	game.style.display = "block";
 }
@@ -56,23 +79,61 @@ function setImage(value, id) {
 	}
 }
 
-function displayScore(playerName) {
-	var overs = Math.floor(totalBalls / 6);
-	var ballsPlayed = Math.floor(totalBalls % 6);
-	ballInfo = overs + " Overs, and " + ballsPlayed + " Balls";
-	document.getElementById("Score").innerHTML = totalScore;
+function winnerBanner(name, state) {
+	var winBlock = document.getElementById("winBlock");
+	var winNameBlock = document.getElementById("winNameBlock");
+	var winName = document.getElementById("winName");
+	var winState = document.getElementById("winState");
+	winBlock.style.display = "block";
+	if (state == true) {
+		winNameBlock.style.display = "block";
+		winName.innerHTML = "is "+name;
+		winState.innerHTML = "Winner";
+	} else {
+		winState.innerHTML = "Draw";
+	}
+}
+
+function displayScoreUser(playerName) {
+	var winName, winState;
+	var overs = Math.floor(totalBallsUser / 6);
+	var ballsPlayed = Math.floor(totalBallsUser % 6);
+	var oversSys = Math.floor(totalBallsSys / 6);
+	var ballsPlayedSys = Math.floor(totalBallsSys % 6);
+	ballUserInfo = overs + " overs, and " + ballsPlayed + " balls";
+	ballCompInfo = oversSys + " overs, and " + ballsPlayedSys + " balls";
+	document.getElementById("Score").innerHTML = totalScoreUser;
 	document.getElementById("Name").innerHTML = playerName;
-	document.getElementById("Balls").innerHTML = ballInfo;
+	document.getElementById("Balls").innerHTML = ballUserInfo;
+	document.getElementById("ScoreSys").innerHTML = totalScoreSys;
+	document.getElementById("BallsSys").innerHTML = ballCompInfo;
+	if (totalScoreUser > totalScoreSys) {
+		winName = playerName;
+		winState = true;
+	} else if (totalScoreUser == totalScoreSys) {
+		winState = false;
+	} else {
+		winName = "Computer";
+		winState = true;
+	}
+	winnerBanner(winName, winState);
 }
 
 function gameFinished() {
-	var drop = document.getElementById("drop");
-	var finish = document.getElementById("finish");
+	var drop = document.getElementById("dropBat");
+	var finish = document.getElementById("finishBat");
 	drop.style.display = "none";
 	finish.style.display = "block";
 }
 
-function restartFun(){
+function pingBowling() {
+	var batGameBlock = document.getElementById("batGameBlock");
+	var ballGameBlock = document.getElementById("ballGameBlock");
+	batGameBlock.style.display = "none";
+	ballGameBlock.style.display = "block";
+}
+
+function restartFun() {
 	location.reload(true);
 }
 
@@ -80,13 +141,30 @@ function finishFun() {
 	var final = document.getElementById("final");
 	var finish = document.getElementById("finish");
 	var restart = document.getElementById("restart");
-	var gameBlock = document.getElementById("gameBlock");
+	var ballGameBlock = document.getElementById("ballGameBlock");
 	var playerName = window.prompt("Please enter your name", "Harry Potter");
 	finish.style.display = "none";
 	restart.style.display = "block";
 	final.style.display = "block";
-	gameBlock.style.display = "none";
-	displayScore(playerName);
+	ballGameBlock.style.display = "none";
+	displayScoreUser(playerName);
+}
+
+function updateBalls() {
+	var overs = Math.floor(totalBallsSys / 6);
+	var ballsPlayed = Math.floor(totalBallsSys % 6);
+	ballInfo = overs + " overs, and " + ballsPlayed + " balls";
+	var currentBalls = document.getElementById("currentBalls");
+	currentBalls.innerHTML = ballInfo;
+}
+
+function gameBowlingFinished() {
+	//	var ballGameBlock = document.getElementById("ballGameBlock");
+	//	ballGameBlock.style.display = "none";
+	var dropBall = document.getElementById("dropBall");
+	var finish = document.getElementById("finish");
+	dropBall.style.display = "none";
+	finish.style.display = "block";
 }
 
 function mainGame() {
@@ -120,9 +198,42 @@ function mainGame() {
 	} else {
 		window.alert("ERROR: Enter a score in the range [0,6]");
 	}
-	document.getElementById("currentScore").innerHTML = totalScore;
+	document.getElementById("currentScore").innerHTML = totalScoreUser;
 }
 
+function mainGameBowling() {
+
+	var idc = "compHandImageBowl"
+	var freeHit = false;
+	countSys();
+	if (userInput == "exit") {
+		return;
+	}
+	if (userInput <= 6 && userInput >= 0) {
+		var genNum = Math.floor(Math.random() * 6) + 1;
+		setImage(genNum, idc);
+		console.log(genNum);
+		if (freeHit == false) {
+			if (userInput == genNum) {
+				window.alert("Empire says Computer is 'OUT' ");
+				gameBowlingFinished();
+				return;
+			}
+		}
+		freeHit = 0;
+		if (userInput != 0) {
+			addScoreSys(genNum);
+		} else {
+			window.alert("Oops no ball \n Computer got a free hit");
+			decSys();
+			freeHit = true;
+		}
+	} else {
+		window.alert("ERROR: Enter a score in the range [0,6]");
+	}
+	updateBalls();
+	document.getElementById("currentScoreSys").value = totalScoreSys;
+}
 
 function input() {
 	'use strict';

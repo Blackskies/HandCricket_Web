@@ -6,7 +6,7 @@
 	<script src="js/handcricket.js"></script>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<style>
-/*
+		/*
 		.jumbotron {
 			background-color: #03A9F4;
 						text-decoration-color: snow;
@@ -28,7 +28,7 @@
 
 <body>
 	<div class="container-fluid">
-		<div class="jumbotron">
+		<div class="jumbotron" id="headerBlock">
 			<img src="img/handCricketLogo.png" class="img-thumbnail float-right" alt="Responsive image" width="15%" height="15%">
 			<h1>Let's Play Hand Cricket</h1>
 			<h3>Have Fun :-)</h3>
@@ -40,16 +40,26 @@
 				<button class="btn btn-success btn-lg btn-block" onclick="startButtonFun();">Start</button>
 			</div>
 		</div>
+		<br>
+		<div class="alert alert-success" role="alert" style="display:none;" id="winBlock">
+			<h4 class="alert-heading" id="winState"></h4>
+			<div style="display=none; display:inline;" id="winNameBlock">
+<!--				<p style="display:inline">is &nbsp;</p>-->
+				<h5 class="mb-0" id="winName" style="display:inline"></h5>
+			</div>
+			<hr>
+			<p>That was a Good game. Keep Playing and Scoring</p>
+		</div>
+		<br>
 		<div class="">
 			<div id="restart" style="display:none">
 				<div class="container text-center">
-					<br>
 					<br>
 					<button class="btn btn-success btn-lg btn-block" onclick="restartFun();">Restart</button>
 				</div>
 			</div>
 		</div>
-		<div id="gameBlock" style="display:none">
+		<div id="batGameBlock" style="display:none">
 			<div class="container">
 				<p style="text-align: center;" id="info">Start by clicking the score and Drop your Choice</p>
 				<div class="row">
@@ -63,27 +73,18 @@
 							<br>
 							<div class="text-center">
 								<div class="btn-group " role="group" aria-label="Basic example">
-									<button type="button" class="btn btn-secondary" onclick="setValue(0);">0</button>
-									<button type="button" class="btn btn-secondary" onclick="setValue(1);">1</button>
-									<button type="button" class="btn btn-secondary" onclick="setValue(2);">2</button>
-									<button type="button" class="btn btn-secondary" onclick="setValue(3);">3</button>
-									<button type="button" class="btn btn-secondary" onclick="setValue(4);">4</button>
-									<button type="button" class="btn btn-secondary" onclick="setValue(5);">5</button>
-									<button type="button" class="btn btn-secondary" onclick="setValue(6);">6</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBat(0);">0</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBat(1);">1</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBat(2);">2</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBat(3);">3</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBat(4);">4</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBat(5);">5</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBat(6);">6</button>
 								</div>
 								<div>Your Score :
 									<p id="currentScore" style="display:inline">0</p>
 								</div>
 							</div>
-							<!--
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Player </span>
-                        <input type="number" class="form-control" placeholder="Enter a Score" aria-label="Username" id="userN" aria-describedby="basic-addon1">
-                                                <div class="col-lg-1 ml-auto">
-                        <button type="button" onclick="input();" class="btn btn-primary">Drop!</button>
-                                                </div>
-                    </div>
--->
 						</div>
 					</div>
 					<div class="col-lg-2 text-center col-md-2 col-sm-2">
@@ -92,14 +93,13 @@
 						<br>
 						<br>
 						<br>
-						<button class="btn btn-primary btn-block align-middle" onclick="input();" id="drop">Drop!</button>
-						<button class="btn btn-primary btn-block align-middle" onclick="finishFun();" id="finish" style="display:none">get Score</button>
+						<button class="btn btn-primary btn-block align-middle" onclick="input();" id="dropBat">Drop!</button>
+						<button class="btn btn-primary btn-block align-middle" onclick="pingBowling();" id="finishBat" style="display:none">Next</button>
 						<br>
 						<br>
 						<br>
 						<br>
 						<br>
-						<!--					<h3 class="text-center">. Vs .</h3>-->
 					</div>
 					<div class="col-lg-5 col-md-5 col-sm-5">
 						<h4 class="text-center">bowling</h4>
@@ -118,33 +118,102 @@
 				</div>
 			</div>
 		</div>
+
+		<div id="ballGameBlock" style="display:none">
+			<div class="container">
+				<p style="text-align: center;" id="infoBall">Start by clicking the score and Drop your Choice</p>
+				<div class="row">
+					<div class="col-lg-5 col-md-5 col-sm-5">
+						<div class="thumbnail">
+							<h4 class="text-center">Bowling</h4>
+							<br>
+							<div class="text-center">
+								<img src="img/orange0.png" id="userHandImageBowl" height="50%" width="50%" align="center">
+							</div>
+							<br>
+							<div class="text-center">
+								<div class="btn-group " role="group" aria-label="Basic example">
+									<button type="button" class="btn btn-secondary" onclick="setValueBall(0);">0</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBall(1);">1</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBall(2);">2</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBall(3);">3</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBall(4);">4</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBall(5);">5</button>
+									<button type="button" class="btn btn-secondary" onclick="setValueBall(6);">6</button>
+								</div>
+								<div>
+									<p id="currentBalls" style="display:inline">0 Balls</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-lg-2 text-center col-md-2 col-sm-2">
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<button class="btn btn-primary btn-block align-middle" onclick="mainGameBowling();" id="dropBall">Drop!</button>
+						<button class="btn btn-primary btn-block align-middle" onclick="finishFun();" id="finish" style="display:none">get Score</button>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+					</div>
+					<div class="col-lg-5 col-md-5 col-sm-5">
+						<h4 class="text-center">Batting</h4>
+						<br>
+						<div class="text-center">
+							<img src="img/orange0.png" id="compHandImageBowl" height="50%" width="50%" align="center">
+						</div>
+						<br>
+						<div class="">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">Computer Scored</span>
+								<input type="text" class="form-control" id="currentScoreSys" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" value="0" disabled>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<br>
 		<footer>
+			<!--
+				<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Well done!</h4>
+			<p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+			<hr>
+			<p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+		</div>
+-->
 			<div class="jumbotron" id="final" style="display:none">
 				<div>
 					<h4>
 						<ul>
-							<li>Well Played
+							<li>Well played
 								<div id="Name" style="display:inline"> </div>
 							</li>
-							<li>Your total Score is
+							<li>Your total score is
 								<div id="Score" style="display:inline"></div>
 							</li>
 							<li>You played
 								<div id="Balls" style="display:inline"></div>
 							</li>
+							<br>
+							<li>Computer total score is
+								<div id="ScoreSys" style="display:inline"></div>
+							</li>
+							<li>Computer played
+								<div id="BallsSys" style="display:inline"></div>
+							</li>
 						</ul>
 					</h4>
 				</div>
 			</div>
-			<!--
-        <script>
-            //            displayScore(totalBalls, totalScore, playerName);
-            alert(" Keep playing  'Hand Cricket' the only fun game");
-            //        test();
-
-        </script>
--->
 		</footer>
 	</div>
 
