@@ -54,8 +54,8 @@ function myFunction() {
 function startButtonFun() {
 	var start = document.getElementById("startButton");
 	var game = document.getElementById("batGameBlock");
-//	var headerBlock = document.getElementById("headerBlock");
-//	headerBlock.style.display = "none";
+	//	var headerBlock = document.getElementById("headerBlock");
+	//	headerBlock.style.display = "none";
 	start.style.display = "none";
 	game.style.display = "block";
 }
@@ -79,23 +79,30 @@ function setImage(value, id) {
 	}
 }
 
-function winnerBanner(name, state) {
+function winnerBanner(name, state, diff, player) {
 	var winBlock = document.getElementById("winBlock");
 	var winNameBlock = document.getElementById("winNameBlock");
 	var winName = document.getElementById("winName");
 	var winState = document.getElementById("winState");
+	var summary = document.getElementById("summary");
 	winBlock.style.display = "block";
 	if (state == true) {
 		winNameBlock.style.display = "block";
-		winName.innerHTML = "is "+name;
-		winState.innerHTML = "Winner";
+		if (player == "true") {
+			winName.innerHTML = "Congrates..!! " + name + " Wins the Match";
+		} else {
+			winName.innerHTML = "Oops..!! " + name + " Wins the Match";			
+		}
+		//		winState.innerHTML = "Winner";
+		summary.innerHTML = "Scored over " + diff + " Runs more, that was a good game"
 	} else {
 		winState.innerHTML = "Draw";
+		summary.innerHTML = "Wow! game was fierce Game"
 	}
 }
 
 function displayScoreUser(playerName) {
-	var winName, winState;
+	var winName, winState, diff, player;
 	var overs = Math.floor(totalBallsUser / 6);
 	var ballsPlayed = Math.floor(totalBallsUser % 6);
 	var oversSys = Math.floor(totalBallsSys / 6);
@@ -110,13 +117,17 @@ function displayScoreUser(playerName) {
 	if (totalScoreUser > totalScoreSys) {
 		winName = playerName;
 		winState = true;
+		player = true;
+		diff = totalScoreUser - totalScoreSys;
 	} else if (totalScoreUser == totalScoreSys) {
 		winState = false;
 	} else {
 		winName = "Computer";
 		winState = true;
+		player = false;
+		diff = totalScoreSys - totalScoreUser;
 	}
-	winnerBanner(winName, winState);
+	winnerBanner(winName, winState, diff, player);
 }
 
 function gameFinished() {
