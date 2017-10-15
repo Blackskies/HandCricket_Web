@@ -3,6 +3,10 @@ var totalScoreUser = 0;
 var userInput = 0;
 var totalBallsSys = 0;
 var totalScoreSys = 0;
+var battingBool = true;
+var battingCompleted = false;
+var bowlingCompleted = false;
+var tossResult = 1;
 
 function addScore(x) {
 	totalScoreUser = totalScoreUser + x;
@@ -28,17 +32,37 @@ function decSys() {
 	totalBallsSys -= 1;
 }
 
+function gamePing() {
+	if (battingBool == true) {
+		mainGame();
+	} else {
+		mainGameBowling();
+	}
+}
+
+function gamePlayChanger() {
+	if (battingBool == true) {
+		battingBool = false;
+		battingCompleted = true;
+	} else {
+		battingBool = true;
+		bowlingCompleted = true;
+	}
+}
+
 function setValueBat(value) {
 	userInput = Number(value);
-	id = "userHandImage"
+	id = "userHandImage";
 	setImage(value, id);
+	gamePing();
 	//	alert("Value set :"+value);
 }
 
 function setValueBall(value) {
 	userInput = Number(value);
-	id = "userHandImageBowl"
+	id = "userHandImageBowl";
 	setImage(value, id);
+	gamePing();
 	//	alert("Value set :"+value);
 }
 
@@ -88,16 +112,16 @@ function winnerBanner(name, state, diff, player) {
 	winBlock.style.display = "block";
 	if (state == true) {
 		winNameBlock.style.display = "block";
-		if (player == "true") {
-			winName.innerHTML = "Congrates..!! " + name + " Wins the Match";
+		if (player == true) {
+			winName.innerHTML = "Congrats..!! " + name + " Wins the Match";
 		} else {
-			winName.innerHTML = "Oops..!! " + name + " Wins the Match";			
+			winName.innerHTML = "Oops..!! " + name + " Wins the Match";
 		}
 		//		winState.innerHTML = "Winner";
-		summary.innerHTML = "Scored over " + diff + " Runs more, that was a good game"
+		summary.innerHTML = "Scored over " + diff + " Runs more, that was a good game";
 	} else {
 		winState.innerHTML = "Draw";
-		summary.innerHTML = "Wow! game was fierce Game"
+		summary.innerHTML = "Wow! game was fierce Game";
 	}
 }
 
@@ -130,11 +154,42 @@ function displayScoreUser(playerName) {
 	winnerBanner(winName, winState, diff, player);
 }
 
+function disableBatBtn(){
+	document.getElementById("batBtn0").disabled = true;
+	document.getElementById("batBtn1").disabled = true;
+	document.getElementById("batBtn2").disabled = true;
+	document.getElementById("batBtn3").disabled = true;
+	document.getElementById("batBtn4").disabled = true;
+	document.getElementById("batBtn5").disabled = true;
+	document.getElementById("batBtn6").disabled = true;
+}
+
+function disableBallBtn(){
+	document.getElementById("ballBtn0").disabled = true;
+	document.getElementById("ballBtn1").disabled = true;
+	document.getElementById("ballBtn2").disabled = true;
+	document.getElementById("ballBtn3").disabled = true;
+	document.getElementById("ballBtn4").disabled = true;
+	document.getElementById("ballBtn5").disabled = true;
+	document.getElementById("ballBtn6").disabled = true;
+}
+
 function gameFinished() {
-	var drop = document.getElementById("dropBat");
+	//	var drop = document.getElementById("dropBat");
 	var finish = document.getElementById("finishBat");
-	drop.style.display = "none";
+	//	drop.style.display = "none";
 	finish.style.display = "block";
+	disableBatBtn();
+}
+
+function gameBowlingFinished() {
+//		var ballGameBlock = document.getElementById("ballGameBlock");
+//		ballGameBlock.style.display = "none";
+	//	var dropBall = document.getElementById("dropBall");
+	var finish = document.getElementById("finish");
+	//	dropBall.style.display = "none";
+	finish.style.display = "block";
+	disableBallBtn();
 }
 
 function pingBowling() {
@@ -166,17 +221,9 @@ function updateBalls() {
 	var ballsPlayed = Math.floor(totalBallsSys % 6);
 	ballInfo = overs + " overs, and " + ballsPlayed + " balls";
 	var currentBalls = document.getElementById("currentBalls");
-	currentBalls.innerHTML = ballInfo;
+	currentBalls.value = ballInfo;
 }
 
-function gameBowlingFinished() {
-	//	var ballGameBlock = document.getElementById("ballGameBlock");
-	//	ballGameBlock.style.display = "none";
-	var dropBall = document.getElementById("dropBall");
-	var finish = document.getElementById("finish");
-	dropBall.style.display = "none";
-	finish.style.display = "block";
-}
 
 function mainGame() {
 
@@ -194,6 +241,7 @@ function mainGame() {
 		if (freeHit == false) {
 			if (userInput == genNum) {
 				window.alert("Empire says Your 'OUT' ");
+				gamePlayChanger();
 				gameFinished();
 				return;
 			}
@@ -209,7 +257,7 @@ function mainGame() {
 	} else {
 		window.alert("ERROR: Enter a score in the range [0,6]");
 	}
-	document.getElementById("currentScore").innerHTML = totalScoreUser;
+	document.getElementById("currentScore").value = totalScoreUser;
 }
 
 function mainGameBowling() {
@@ -227,6 +275,7 @@ function mainGameBowling() {
 		if (freeHit == false) {
 			if (userInput == genNum) {
 				window.alert("Empire says Computer is 'OUT' ");
+				gamePlayChanger();
 				gameBowlingFinished();
 				return;
 			}
@@ -246,13 +295,13 @@ function mainGameBowling() {
 	document.getElementById("currentScoreSys").value = totalScoreSys;
 }
 
-function input() {
-	'use strict';
-	//	alert(userInput);
-	//    var userInput = document.getElementById("userN").value;
-	//    mainGame(Number(userInput));
-	mainGame();
-}
+//function input() {
+//	'use strict';
+//	//	alert(userInput);
+//	//    var userInput = document.getElementById("userN").value;
+//	//    mainGame(Number(userInput));
+//	mainGame();
+//}
 
 //function alert_value(z) {
 //	//	var z = document.getElementById("userScoreId").value;

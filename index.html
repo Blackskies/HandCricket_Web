@@ -43,7 +43,6 @@
 		<br>
 		<div class="alert alert-success" role="alert" style="display:none;" id="winBlock">
 			<div style="display=none; display:inline;" id="winNameBlock">
-<!--				<p style="display:inline">is &nbsp;</p>-->
 				<h5 class="mb-0" id="winName" style="display:inline"></h5>
 			</div>
 			<h4 class="alert-heading" id="winState"></h4>
@@ -72,18 +71,17 @@
 							</div>
 							<br>
 							<div class="text-center">
-								<div class="btn-group " role="group" aria-label="Basic example">
-									<button type="button" class="btn btn-secondary" onclick="setValueBat(0);">0</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBat(1);">1</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBat(2);">2</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBat(3);">3</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBat(4);">4</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBat(5);">5</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBat(6);">6</button>
+								<div class="">
+									<div class="input-group">
+										<span class="input-group-addon" id="basic-addon1">User Score</span>
+										<input type="text" class="form-control" id="currentScore" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" disabled>
+									</div>
 								</div>
+								<!--
 								<div>Your Score :
-									<p id="currentScore" style="display:inline">0</p>
+									<p id="" style="display:inline">0</p>
 								</div>
+-->
 							</div>
 						</div>
 					</div>
@@ -93,7 +91,6 @@
 						<br>
 						<br>
 						<br>
-						<button class="btn btn-primary btn-block align-middle" onclick="input();" id="dropBat">Drop!</button>
 						<button class="btn btn-primary btn-block align-middle" onclick="pingBowling();" id="finishBat" style="display:none">Next</button>
 						<br>
 						<br>
@@ -116,6 +113,18 @@
 						</div>
 					</div>
 				</div>
+				<br>
+				<div class="text-center">
+					<div class="btn-group btn-group-justified btn-group-lg" id="batBtnGroup" role="group" aria-label="Basic example">
+						<button type="button" class="btn btn-secondary" id="batBtn0" onclick="setValueBat(0);">0</button>
+						<button type="button" class="btn btn-secondary" id="batBtn1" onclick="setValueBat(1);">1</button>
+						<button type="button" class="btn btn-secondary" id="batBtn2" onclick="setValueBat(2);">2</button>
+						<button type="button" class="btn btn-secondary" id="batBtn3" onclick="setValueBat(3);">3</button>
+						<button type="button" class="btn btn-secondary" id="batBtn4" onclick="setValueBat(4);">4</button>
+						<button type="button" class="btn btn-secondary" id="batBtn5" onclick="setValueBat(5);">5</button>
+						<button type="button" class="btn btn-secondary" id="batBtn6" onclick="setValueBat(6);">6</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -132,18 +141,17 @@
 							</div>
 							<br>
 							<div class="text-center">
-								<div class="btn-group " role="group" aria-label="Basic example">
-									<button type="button" class="btn btn-secondary" onclick="setValueBall(0);">0</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBall(1);">1</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBall(2);">2</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBall(3);">3</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBall(4);">4</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBall(5);">5</button>
-									<button type="button" class="btn btn-secondary" onclick="setValueBall(6);">6</button>
+								<div class="">
+									<div class="input-group">
+										<span class="input-group-addon" id="basic-addon1">User</span>
+										<input type="text" class="form-control" id="currentBalls" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" value="0" disabled>
+									</div>
 								</div>
+<!--
 								<div>
-									<p id="currentBalls" style="display:inline">0 Balls</p>
+									<p id="" style="display:inline">0 Balls</p>
 								</div>
+-->
 							</div>
 
 						</div>
@@ -154,7 +162,6 @@
 						<br>
 						<br>
 						<br>
-						<button class="btn btn-primary btn-block align-middle" onclick="mainGameBowling();" id="dropBall">Drop!</button>
 						<button class="btn btn-primary btn-block align-middle" onclick="finishFun();" id="finish" style="display:none">get Score</button>
 						<br>
 						<br>
@@ -171,10 +178,22 @@
 						<br>
 						<div class="">
 							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1">Computer Scored</span>
+								<span class="input-group-addon" id="basic-addon1">Computer Score</span>
 								<input type="text" class="form-control" id="currentScoreSys" placeholder="Scored" aria-label="Username" aria-describedby="basic-addon1" value="0" disabled>
 							</div>
 						</div>
+					</div>
+				</div>
+				<br>
+				<div class="text-center">
+					<div class="btn-group btn-group-justified btn-group-lg" role="group" id="ballBtnGroup" aria-label="Basic example">
+						<button type="button" id="ballBtn0" class="btn btn-secondary" onclick="setValueBall(0);">0</button>
+						<button type="button" id="ballBtn1" class="btn btn-secondary" onclick="setValueBall(1);">1</button>
+						<button type="button" id="ballBtn2" class="btn btn-secondary" onclick="setValueBall(2);">2</button>
+						<button type="button" id="ballBtn3" class="btn btn-secondary" onclick="setValueBall(3);">3</button>
+						<button type="button" id="ballBtn4" class="btn btn-secondary" onclick="setValueBall(4);">4</button>
+						<button type="button" id="ballBtn5" class="btn btn-secondary" onclick="setValueBall(5);">5</button>
+						<button type="button" id="ballBtn6" class="btn btn-secondary" onclick="setValueBall(6);">6</button>
 					</div>
 				</div>
 			</div>
@@ -182,36 +201,31 @@
 
 		<br>
 		<footer>
-			<!--
-				<div class="alert alert-success" role="alert">
-			<h4 class="alert-heading">Well done!</h4>
-			<p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-			<hr>
-			<p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-		</div>
--->
+
 			<div class="jumbotron" id="final" style="display:none">
+<!--			<div class="card" id="final" style="display:none">-->
 				<div>
-					<h4>
-						<ul>
-							<li>Well played
+					<h4>Score Board</h4>
+					<h5>
+						<ul class="list-group">
+							<li class="list-group-item">Well played
 								<div id="Name" style="display:inline"> </div>
 							</li>
-							<li>Your total score is
+							<li class="list-group-item">Your total score is
 								<div id="Score" style="display:inline"></div>
 							</li>
-							<li>You played
+							<li class="list-group-item">You played
 								<div id="Balls" style="display:inline"></div>
 							</li>
 							<br>
-							<li>Computer total score is
+							<li class="list-group-item">Computer total score is
 								<div id="ScoreSys" style="display:inline"></div>
 							</li>
-							<li>Computer played
+							<li class="list-group-item">Computer played
 								<div id="BallsSys" style="display:inline"></div>
 							</li>
 						</ul>
-					</h4>
+					</h5>
 				</div>
 			</div>
 		</footer>
