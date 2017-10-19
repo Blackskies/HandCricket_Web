@@ -115,10 +115,10 @@ function tossingCoin() {
 		//		alert(gameSelect);
 		if (gameSelect == true) {
 			setBattingBool(false);
-			window.alert("Computer Choose to Bat");
+			window.alert("Computer Choose Batting");
 		} else {
 			setBattingBool(true);
-			window.alert("Computer choose to Bowl");
+			window.alert("Computer choose Bowling");
 		}
 		hideGameTossingBlock();
 		showStartBtn();
