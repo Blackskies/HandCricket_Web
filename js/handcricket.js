@@ -8,8 +8,8 @@ var battingCompleted = false;
 var bowlingCompleted = false;
 var tossResult = 1;
 
-function setBattingBool(toss){
-	battingBool = toss ;
+function setBattingBool(toss) {
+	battingBool = toss;
 }
 
 function addScore(x) {
@@ -63,11 +63,13 @@ function hideBowlingBlock() {
 function showBowlingBlock() {
 	var ballGameBlock = document.getElementById("ballGameBlock");
 	ballGameBlock.style.display = "block";
+	document.getElementById("header").innerHTML = "Bowling Time";
 }
 
 function showBattingBlock() {
 	var batGameBlock = document.getElementById("batGameBlock");
 	batGameBlock.style.display = "block";
+	document.getElementById("header").innerHTML = "Batting Time";
 }
 
 function showNextButton() {
@@ -122,7 +124,7 @@ function nextBtn() {
 			hideBattingBlock();
 		}
 	} else {
-		document.getElementById("header").innerHTML = "Game Finished";
+		document.getElementById("header").innerHTML = "Game Over";
 	}
 }
 
@@ -147,7 +149,6 @@ function startButtonFun() {
 	start.style.display = "none";
 	userInput = 0;
 	genNum = 0;
-	document.getElementById("header2").style.display = "none";
 	if (battingBool == true) {
 		showBattingBlock();
 	} else {
@@ -376,7 +377,7 @@ function mainGameBowling() {
 	document.getElementById("currentScoreSys").value = totalScoreSys;
 }
 
-function testAlert(){
+function testAlert() {
 	alert("Working");
 }
 

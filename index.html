@@ -19,29 +19,53 @@
 			</div>
 		</div>
 		<br>
-		<div id="tossWinChoice">
-			<div class="text-center">
-			<img src="img/coinStart.png" id="coinImage" height="20%" width="20%">
-			</div>
-			<br>
-			<div class="text-center">
-			<p>Choose your play</p>
-				<div class="btn-group btn-group-lg">
-					<button type="button" class="btn btn-primary col-md-12" id="heads" value="true" onclick="headCoinBtn(true);">Batting</button>
-					<button type="button" class="btn btn-primary col-md-12" id="tails" value="false" onclick="tailCoinBtn(false);">Bowling</button>
+		<div class="container text-center" id="tossWinChoice" style="display:none">
+			<div id="gameChoiceBlock" style="display:none">
+				<div class="text-center">
+					<img class="text-center" src="img/initPlay.png" id="playImage" height="20%" width="20%">
+				</div>
+				<br>
+				<div class="text-center">
+					<p></p>
+					<div class="btn-group btn-group-lg">
+						<button type="button" class="btn btn-primary col-md-12" id="battingInit" value="true" onclick="battingBtnFunction(1);">Batting</button>
+						<button type="button" class="btn btn-primary col-md-12" id="bowlingInit" value="false" onclick="bowllingBtnFunction(0);">Bowling</button>
+					</div>
+				</div>
+				<br>
+				<div class="text-center">
+					<button class="btn btn-secondary btn-lg col-md-3" id="goBtn" onclick="goBtnFun();">Go!</button>
 				</div>
 			</div>
-			<br>
-			<div class="text-center">
-				<button class="btn btn-secondary btn-lg col-md-3" id="tossBtn" onclick="tossBtnFun();">Go!</button>
+			<div id="gameTossingBlock" class="text-center">
+				<div class="text-center" align="center">
+					<img class="" src="img/coinStart.png" id="coinImage" height="20%" width="20%">
+				</div>
+				<br>
+				<div class="text-center">
+					<p>Choose your side</p>
+					<div class="btn-group btn-group-lg">
+						<button type="button" class="btn btn-primary col-md-12" id="heads" value="true" onclick="headCoinBtn(true);">Heads</button>
+						<button type="button" class="btn btn-primary col-md-12" id="tails" value="false" onclick="tailCoinBtn(false);">Tails</button>
+					</div>
+				</div>
+				<br>
+				<div class="text-center">
+					<button class="btn btn-secondary btn-lg col-md-3" id="tossBtn" onclick="tossBtnFun();">Toss</button>
+				</div>
 			</div>
+		</div>
+		<!-- Jump Button class-->
+		<div id="jumpButton" class="text-center">
+			<br>
+			<button class="btn btn-success btn-lg col-md-3 " onclick="jumpBtn();" id="startBtn">Ready to Play!</button>
 		</div>
 		<div id="startButton" style="display:none">
 			<!-- Start Button class-->
 			<div class="container text-center">
 				<br>
 				<br>
-				<button class="btn btn-success btn-lg btn-block" onclick="startButtonFun();" id="startBtn">Start</button>
+				<button class="btn btn-success btn-lg col-md-4" onclick="startButtonFun();" id="startBtn">Start</button>
 			</div>
 		</div>
 		<br>
@@ -231,7 +255,7 @@
 			</div>
 		</footer>
 	</div>
-<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+	<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 </body>
 
 </html>
