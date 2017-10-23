@@ -3,7 +3,7 @@ var toss = true;
 function showStartBtn() {
 	var startButton = document.getElementById("startButton");
 	startButton.style.display = "block";
-	document.getElementById("header").innerHTML = "All set";
+	//	document.getElementById("header").innerHTML = "All set";
 }
 
 function hideStartBtn() {
@@ -63,11 +63,14 @@ function setPlayImage(state) {
 function battingBtnFunction(batValue) {
 	setPlayImage(batValue);
 	setBattingBool(true);
+	document.getElementById("header").innerHTML = "You Choose Batting";
+
 }
 
 function bowllingBtnFunction(batValue) {
 	setPlayImage(batValue);
 	setBattingBool(false);
+	document.getElementById("header").innerHTML = "You Choose Bowling";
 }
 
 function tailCoinBtn(coinValue) {
@@ -112,13 +115,15 @@ function tossingCoin() {
 	} else {
 		window.alert("You lost the toss");
 		gameSelect = randomBoolGenerator();
-		//		alert(gameSelect);
 		if (gameSelect == true) {
 			setBattingBool(false);
-			window.alert("Computer Choose to Bat");
+			//			window.alert("Computer Choose Batting");
+			document.getElementById("header").innerHTML = "Computer Choose Batting";
 		} else {
 			setBattingBool(true);
-			window.alert("Computer choose to Bowl");
+			//			window.alert("Computer choose Bowling");
+			document.getElementById("header").innerHTML = "Computer Choose Bowling";
+
 		}
 		hideGameTossingBlock();
 		showStartBtn();
@@ -131,6 +136,5 @@ function tossBtnFun() {
 
 function goBtnFun() {
 	showStartBtn();
-	//	document.getElementById("startBtn") = startButtonFun(toss);
 	hideTossWinChoice();
 }
