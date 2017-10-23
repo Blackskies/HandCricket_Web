@@ -117,12 +117,6 @@ function tossingCoin() {
 		gameSelect = randomBoolGenerator();
 		if (gameSelect == true) {
 			setBattingBool(false);
-<<<<<<< HEAD
-			window.alert("Computer Choose Batting");
-		} else {
-			setBattingBool(true);
-			window.alert("Computer choose Bowling");
-=======
 			//			window.alert("Computer Choose Batting");
 			document.getElementById("header").innerHTML = "Computer Choose Batting";
 		} else {
@@ -130,7 +124,6 @@ function tossingCoin() {
 			//			window.alert("Computer choose Bowling");
 			document.getElementById("header").innerHTML = "Computer Choose Bowling";
 
->>>>>>> R4
 		}
 		hideGameTossingBlock();
 		showStartBtn();
