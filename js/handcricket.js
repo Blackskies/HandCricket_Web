@@ -189,11 +189,7 @@ function winnerBanner(name, state, diff, player) {
 		winNameBlock.style.display = "block";
 		if (player == true) {
 			winBlock.classList.add("alert-success");
-			if (name != null) {
-				winName.innerHTML = "Congrats..!! You Won the match";
-			} else {
-				window.alert("Error");
-			}
+			winName.innerHTML = "Congrats..!! You Won the match";
 		} else {
 			winBlock.classList.add("alert-danger");
 			winName.innerHTML = "Oops..!! " + name + " Wins the Match";
