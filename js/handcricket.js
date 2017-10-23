@@ -8,6 +8,7 @@ var battingCompleted = false;
 var bowlingCompleted = false;
 var tossResult = 1;
 
+
 function setBattingBool(toss) {
 	battingBool = toss;
 }
@@ -188,7 +189,11 @@ function winnerBanner(name, state, diff, player) {
 		winNameBlock.style.display = "block";
 		if (player == true) {
 			winBlock.classList.add("alert-success");
-			winName.innerHTML = "Congrats..!! " + name + " Wins the Match";
+			if (name != null) {
+				winName.innerHTML = "Congrats..!! You Won the match";
+			} else {
+				window.alert("Error");
+			}
 		} else {
 			winBlock.classList.add("alert-danger");
 			winName.innerHTML = "Oops..!! " + name + " Wins the Match";
@@ -284,6 +289,7 @@ function gameBowlingFinished() {
 	disableBallBtn();
 }
 
+//Restart Function
 function restartFun() {
 	location.reload(true);
 }
@@ -303,8 +309,25 @@ function updateBalls() {
 	currentBalls.value = ballInfo;
 }
 
-function mainGameBatting() {
+function scoreCheck() {
+	if (battingCompleted == true || bowlingCompleted == true) {
+		if (battingCompleted == true) {
+			if (totalScoreSys > totalScoreUser) {
+				disableBallBtn();
+				setBowlingCompleted();
+				showNextButton();
+			}
+		} else {
+			if (totalScoreSys < totalScoreUser) {
+				disableBatBtn();
+				setBattingCompleted();
+				showNextButton();
+			}
+		}
+	}
+}
 
+function mainGameBatting() {
 	var idc = "compHandImage"
 	var freeHit = false;
 	count();
@@ -337,7 +360,9 @@ function mainGameBatting() {
 	} else {
 		window.alert("ERROR: Enter a score in the range [0,6]");
 	}
+
 	document.getElementById("currentScore").value = totalScoreUser;
+	scoreCheck();
 }
 
 function mainGameBowling() {
@@ -375,6 +400,7 @@ function mainGameBowling() {
 	}
 	updateBalls();
 	document.getElementById("currentScoreSys").value = totalScoreSys;
+	scoreCheck();
 }
 
 function testAlert() {
