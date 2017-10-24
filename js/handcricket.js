@@ -297,7 +297,7 @@ function finishFun() {
 	displayScoreUser(playerName);
 }
 
-function updateBalls() {
+function updateBallsUser() {
 	var overs = Math.floor(totalBallsSys / 6);
 	var ballsPlayed = Math.floor(totalBallsSys % 6);
 	ballInfo = overs + " overs, and " + ballsPlayed + " balls";
@@ -305,6 +305,15 @@ function updateBalls() {
 	currentBalls.value = ballInfo;
 }
 
+function updateBallsSys() {
+	var overs = Math.floor(totalBallsUser / 6);
+	var ballsPlayed = Math.floor(totalBallsUser % 6);
+	ballInfo = overs + " overs, and " + ballsPlayed + " balls";
+	var currentBallsSys = document.getElementById("currentBallsSys");
+	currentBallsSys.value = ballInfo;
+}
+
+//Checking the score on the second turn
 function scoreCheck() {
 	if (battingCompleted == true || bowlingCompleted == true) {
 		if (battingCompleted == true) {
@@ -323,6 +332,7 @@ function scoreCheck() {
 	}
 }
 
+//Batting Logic
 function mainGameBatting() {
 	var idc = "compHandImage"
 	var freeHit = false;
@@ -334,10 +344,10 @@ function mainGameBatting() {
 		var genNum = Math.floor(Math.random() * 6) + 1;
 		setImage(genNum, idc);
 		console.log(genNum);
-		document.getElementById("genN").value = genNum;
+//		document.getElementById("currentBallsSys").value = genNum;
 		if (freeHit == false) {
 			if (userInput == genNum) {
-				window.alert("Empire says Your 'OUT' ");
+//				window.alert("Empire says Your 'OUT' ");
 				document.getElementById("header").innerHTML = "You are Out";
 				disableBatBtn();
 				setBattingCompleted();
@@ -356,13 +366,13 @@ function mainGameBatting() {
 	} else {
 		window.alert("ERROR: Enter a score in the range [0,6]");
 	}
-
+	updateBallsSys();
 	document.getElementById("currentScore").value = totalScoreUser;
 	scoreCheck();
 }
 
+//Bowling Logic
 function mainGameBowling() {
-
 	var idc = "compHandImageBowl"
 	var freeHit = false;
 	countSys();
@@ -375,7 +385,7 @@ function mainGameBowling() {
 		console.log(genNum);
 		if (freeHit == false) {
 			if (userInput == genNum) {
-				window.alert("Empire says Your 'OUT' ");
+//				window.alert("Empire says Computer is 'OUT' ");
 				document.getElementById("header").innerHTML = "Computer is Out";
 				disableBallBtn();
 				setBowlingCompleted();
@@ -394,13 +404,9 @@ function mainGameBowling() {
 	} else {
 		window.alert("ERROR: Enter a score in the range [0,6]");
 	}
-	updateBalls();
+	updateBallsUser();
 	document.getElementById("currentScoreSys").value = totalScoreSys;
 	scoreCheck();
-}
-
-function testAlert() {
-	alert("Working");
 }
 
 //function input() {
